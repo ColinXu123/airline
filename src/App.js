@@ -4,15 +4,34 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import AdminPage from './Adminpage';
 import axios from 'axios';
 import './App.css';
+import PasswordModal from './PasswordModal';
+
 function App() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+const [accessGranted, setAccessGranted] = useState(false);
     let id_count = 0;
     const [helpTopic, setHelpTopic] = useState('');
     const [otherHelp, setOtherHelp] = useState('');
     const [contactInfo, setContactInfo] = useState('');
+    const openModal = () => {
+        setIsModalOpen(true); // Open the modal
+      };
+    
+      // Function to close the modal
+      const closeModal = () => {
+        setIsModalOpen(false); // Close the modal
+      };
+    
+      // Handle password submission and grant access
+      const handlePasswordSubmit = (enteredPassword) => {
+        setAccessGranted(true);
+            navigate('/Adminpage');
+      };
     const handleSubmit = (event) => {
         event.preventDefault();
         
         let message = `${helpTopic}`;
+
 
         if (helpTopic === 'other') {
             message = `${otherHelp}`;
@@ -33,7 +52,7 @@ function App() {
       
         // Function to handle button click and navigate to another page
        const handleButtonClick = () => {
-         navigate('/Adminpage'); // Navigate to the About page
+        navigate('/Adminpage'); // Navigate to the About page
        };
    
        function handleSave(helpitem) {
@@ -66,9 +85,14 @@ function App() {
             }}>
 
                 
-                <button style={{ fontSize: '1.0rem', textAlign: 'top', marginBottom: '5px' }}  onClick = {handleButtonClick} >Admin MODE</button>
+                <button style={{ fontSize: '1.0rem', textAlign: 'top', marginBottom: '5px' }}  onClick = {openModal} >Admin MODE</button>
                 <h1 style={{ fontSize: '1.5rem', textAlign: 'center', marginBottom: '20px' }}>Airport Help Ticket</h1>
-                
+                {isModalOpen && (
+        <PasswordModal
+          onClose={closeModal}
+          onSubmit={handlePasswordSubmit} // Pass the function that handles the password
+        />
+      )}
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="helpTopic" style={{ fontWeight: 'bold', marginBottom: '5px', display: 'block' }}>
                         What do you need help with?
