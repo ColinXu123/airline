@@ -11,8 +11,10 @@ import cors from 'cors';
 import axios from 'axios';
 import { Low } from 'lowdb'
 import { JSONFile } from 'lowdb/node'
-
+import dotenv from 'dotenv';
 import { GoogleGenerativeAI } from "@google/generative-ai";
+
+dotenv.config()
 
 //Set up Express App for use
 //Line 12-13 set up the CORS policy and the request body parser (don't worry about this, it scares me too)
@@ -54,28 +56,44 @@ We want this section to:
   - Update the jokes array in our database
   - Respond with a successful status code (200)
 */
+// Initialize Gemini API
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+
 app.post('/save-request', async (req, res) => {
-  console.log("POST endpoint hit!")
+  console.log("POST endpoint hit!");
 
   await db.read();
   const { requests } = db.data;
-  let newID = 1
-  if(requests.length != 0){
-    let newID = requests[requests.length-1].key+1;
+  let newID = requests.length ? requests[requests.length - 1].key + 1 : 1;
 
+  let { name, seat_num } = req.body;
+
+  // Check if translation is needed
+  const keywords = ["security", "baggage", "boarding"];
+  if (!keywords.includes(name.toLowerCase())) {
+    try {
+      const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+      const prompt = `Translate the following to English: ${name}`;
+      const result = await model.generateContent(prompt);
+      const response = await result.response;
+      name = response.text().trim();
+    } catch (error) {
+      console.error("Translation error:", error);
+    }
   }
 
   let request = {
     key: newID,
-    name: req.body.name,
-    seat_num: req.body.seat_num,
+    name,
+    seat_num,
     complete: false,
   };
 
-  
   requests.push(request);
   await db.write();
-})
+
+  res.json({ message: "Request saved", request });
+});
 
 /*
 JOKES GET REQUEST
