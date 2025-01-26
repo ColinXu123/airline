@@ -41,17 +41,22 @@ We want this section to:
   - Update the jokes array in our database
   - Respond with a successful status code (200)
 */
-app.post('/save-joke', async (req, res) => {
+app.post('/save-request', async (req, res) => {
   console.log("POST endpoint hit!")
 
-  let joke = {
-    joke: req.body.joke,
-    delivery: req.body.delivery,
+  await db.read();
+  const { requests } = db.data;
+  let newID = requests[requests.length-1].key+1;
+
+  let request = {
+    key: newID,
+    name: req.body.name,
+    seat_num: req.body.seat_num,
+    complete: false,
   };
 
-  await db.read();
-  const { jokes } = db.data;
-  jokes.push(joke);
+  
+  requests.push(request);
   await db.write();
 })
 
@@ -74,12 +79,47 @@ app.get('/', (req, res) => {
   });
 })
 
-app.get('/saved-jokes', async (req, res) => {
+app.get('/get-requests', async (req, res) => {
   console.log("GET endpoint hit!")
   await db.read();
-  const { jokes } = db.data;
-  res.send(jokes);
+  const { requests } = db.data;
+  console.log(requests)
+  res.send(requests);
 })
+
+app.delete('/delete-request', async (req, res) => {
+  console.log("DELETE endpoint hit!");
+
+  // Read the database to get the current data
+  await db.read();
+
+  // Get the 'requests' array from the database
+  const { requests } = db.data;
+
+  // Assuming you're passing an ID or identifier in the request body to specify which request to delete
+  const { id } = req.body;  // You may change this based on your data structure
+
+  if (!id) {
+    return res.status(400).send({ message: 'Request ID is required' });
+  }
+
+  // Find the index of the request to delete
+  const requestIndex = requests.findIndex((request) => request.id === id);
+
+  if (requestIndex === -1) {
+    return res.status(404).send({ message: 'Request not found' });
+  }
+
+  // Remove the request from the array
+  requests.splice(requestIndex, 1);
+
+  // Write the updated data back to the db
+  await db.write();
+
+  // Respond with success
+  res.status(200).send({ message: 'Request deleted successfully' });
+});
+
 
 //Start the app on the specified port. Any request to the app should be made to localhost:{port}
 //This part is standard on almost every Express app!

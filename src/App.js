@@ -5,17 +5,24 @@ import AdminPage from './Adminpage';
 import axios from 'axios';
 import './App.css';
 function App() {
+    let id_count = 0;
     const [helpTopic, setHelpTopic] = useState('');
     const [otherHelp, setOtherHelp] = useState('');
     const [contactInfo, setContactInfo] = useState('');
     const handleSubmit = (event) => {
         event.preventDefault();
-
+        
         let message = `${helpTopic}`;
+
         if (helpTopic === 'other') {
-            message += `${otherHelp}`;
+            message = `${otherHelp}`;
         }
-        handleSave(message);
+        let request = {
+            id :id_count++,
+            name : message,
+            seat_num : contactInfo,
+        }
+        handleSave(request);
 
         setHelpTopic('');
         setOtherHelp('');
@@ -30,14 +37,10 @@ function App() {
        };
    
        function handleSave(helpitem) {
-        let primary = helpitem;
-  
         axios({
           method: 'post',
-          url: 'http://localhost:3001/save-joke',
-          data: {
-            joke: primary || "",
-          }
+          url: 'http://localhost:3001/save-request',
+          data: helpitem
         })
       }  
 
