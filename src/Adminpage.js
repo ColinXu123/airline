@@ -18,15 +18,25 @@ function AdminPage() {
   // Handle deleting a request
   const handleDelete = (id) => {
     console.log(id);
-    axios.delete(`http://localhost:3001/delete-request`)
-      .then(response => {
-        // Remove the deleted request from the UI
-        setRequests(response.filter(request => request.key !== id));
-        alert(`Request with ID ${id} deleted successfully!`);
-      })
-      .catch(error => {
-        console.error('There was an error deleting the request!', error);
-      });
+    let send = {
+      delete : id
+    }
+    
+    axios({
+      method: "post",
+      url:"http://localhost:3001/delete-request",
+      data : send
+    })
+    window.location.reload();
+
+      // .then(response => {
+      //   // Remove the deleted request from the UI
+      //   setRequests(response.filter(request => request.key !== id));
+      //   alert(`Request with ID ${id} deleted successfully!`);
+      // })
+      // .catch(error => {
+      //   console.error('There was an error deleting the request!', error);
+      // });
   };
 
   return (

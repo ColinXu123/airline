@@ -46,7 +46,11 @@ app.post('/save-request', async (req, res) => {
 
   await db.read();
   const { requests } = db.data;
-  let newID = requests[requests.length-1].key+1;
+  let newID = 1
+  if(requests.length != 0){
+    let newID = requests[requests.length-1].key+1;
+
+  }
 
   let request = {
     key: newID,
@@ -87,8 +91,8 @@ app.get('/get-requests', async (req, res) => {
   res.send(requests);
 })
 
-app.delete('/delete-request', async (req, res) => {
-  console.log("DELETE endpoint hit!");
+app.post('/delete-request', async (req, res) => {
+  console.log("Deleting " + req.body.delete);
 
   // Read the database to get the current data
   await db.read();
@@ -97,15 +101,14 @@ app.delete('/delete-request', async (req, res) => {
   const { requests } = db.data;
 
   // Assuming you're passing an ID or identifier in the request body to specify which request to delete
-  const { id } = req.body;  // You may change this based on your data structure
-
+  const id = req.body.delete;  // You may change this based on your data structure
   if (!id) {
     return res.status(400).send({ message: 'Request ID is required' });
   }
 
   // Find the index of the request to delete
-  const requestIndex = requests.findIndex((request) => request.id === id);
-
+  const requestIndex = requests.findIndex((request) => request.key === id);
+  console.log(requestIndex)
   if (requestIndex === -1) {
     return res.status(404).send({ message: 'Request not found' });
   }
