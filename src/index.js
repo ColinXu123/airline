@@ -5,14 +5,14 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Route, Routes, BrowserRouter } from 'react-router-dom';
 import AdminPage from './Adminpage';
+import LanguagePage from './Languagepage';
+import AppRouter from './Router';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<App />} />
-      <Route path="/Adminpage" element={<AdminPage />} />
-    </Routes>
+    <AppRouter />
   </BrowserRouter>
 );
 

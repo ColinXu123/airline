@@ -1,18 +1,43 @@
-import React, { useState } from 'react';
+import React, {useRef, useEffect, useState, useLayoutEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import AdminPage from './Adminpage';
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
+
 import axios from 'axios';
 import './App.css';
 import PasswordModal from './PasswordModal';
 
-function App() {
+function App({lang}) {
     const [isModalOpen, setIsModalOpen] = useState(false);
-const [accessGranted, setAccessGranted] = useState(false);
-    let id_count = 0;
+    const [accessGranted, setAccessGranted] = useState(false);
     const [helpTopic, setHelpTopic] = useState('');
     const [otherHelp, setOtherHelp] = useState('');
     const [contactInfo, setContactInfo] = useState('');
+    const navigate = useNavigate(); // Initialize the navigate function
+    const [language, setLanguage] = useState({
+        "title": "Airport Help Ticket",
+        "help_prompt": "What do you need help with?",
+        "options": ["please select", "baggage assistance", "boarding assistance", "security check", "other"],
+        "other_prompt": "please specify",
+        "contact_info": "Your contact information",
+        "seat_number": "seat number",
+        "submit": "submit ticket",
+        "language_button": {
+            "name": "English",
+            "flag": "🇬🇧"
+          }
+      });
+
+      const{state} = useNavigate();
+      //const [loading, setLoading] 
+      const ForceRefresh = () => {
+        const hasReloaded = useRef(false);
+        useEffect(() => {
+            if (!hasReloaded.current) {
+                hasReloaded.current = true; // Set the ref to true
+                window.location.reload(); // Refresh the page
+            }
+        }, []); // Empty dependency array to run once on mount
+    }
     const openModal = () => {
         setIsModalOpen(true); // Open the modal
       };
@@ -37,7 +62,6 @@ const [accessGranted, setAccessGranted] = useState(false);
             message = `${otherHelp}`;
         }
         let request = {
-            id :id_count++,
             name : message,
             seat_num : contactInfo,
         }
@@ -48,7 +72,6 @@ const [accessGranted, setAccessGranted] = useState(false);
         setContactInfo('');
     };
 
-        const navigate = useNavigate(); // Initialize the navigate function
       
         // Function to handle button click and navigate to another page
        const handleButtonClick = () => {
@@ -63,7 +86,25 @@ const [accessGranted, setAccessGranted] = useState(false);
         })
       }  
 
-    
+        useLayoutEffect(()=>{
+            axios.get("http://localhost:3001/get-chosen-lang")
+                .then(response => {
+                    let chosen_language = response.data.chosen_language
+
+                    if(chosen_language ==''){
+                        navigate('/Mainpage')
+                    }else{
+                        axios.get("http://localhost:3001/get-languages")
+                        .then(response2 =>{
+                            let translations = response2.data.translations
+                            console.log(state)
+                            setLanguage(translations[ state || lang ])
+                            console.log(response)
+                        })
+                    }
+
+                })
+        },[state]);
     return (
         
         <div style={{
@@ -86,7 +127,7 @@ const [accessGranted, setAccessGranted] = useState(false);
 
                 
                 <button style={{ fontSize: '1.0rem', textAlign: 'top', marginBottom: '5px' }}  onClick = {openModal} >Admin MODE</button>
-                <h1 style={{ fontSize: '1.5rem', textAlign: 'center', marginBottom: '20px' }}>Airport Help Ticket</h1>
+                <h1 style={{ fontSize: '1.5rem', textAlign: 'center', marginBottom: '20px' }}>{language.title}</h1>
                 {isModalOpen && (
         <PasswordModal
           onClose={closeModal}
@@ -95,7 +136,7 @@ const [accessGranted, setAccessGranted] = useState(false);
       )}
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="helpTopic" style={{ fontWeight: 'bold', marginBottom: '5px', display: 'block' }}>
-                        What do you need help with?
+                        {language.help_prompt}
                     </label>
                     <select
                         id="helpTopic"
@@ -112,17 +153,17 @@ const [accessGranted, setAccessGranted] = useState(false);
                         }}
                         required
                     >
-                        <option value="">-- Please Select --</option>
-                        <option value="baggage">Baggage Assistance</option>
-                        <option value="boarding">Boarding Information</option>
-                        <option value="security">Security Check</option>
-                        <option value="other">Other</option>
+                        <option value="">{language.options[0]}</option>
+                        <option value="baggage">{language.options[1]}</option>
+                        <option value="boarding">{language.options[2]}</option>
+                        <option value="security">{language.options[3]}</option>
+                        <option value="other">{language.options[4]}</option>
                     </select>
                     
                     {helpTopic === 'other' && (
                         <div>
                             <label htmlFor="otherHelp" style={{ fontWeight: 'bold', marginBottom: '5px', display: 'block' }}>
-                                Please specify your issue
+                                {language.other_prompt}
                             </label>
                             <textarea
                                 id="otherHelp"
@@ -144,7 +185,7 @@ const [accessGranted, setAccessGranted] = useState(false);
                     )}
 
                     <label htmlFor="contactInfo" style={{ fontWeight: 'bold', marginBottom: '5px', display: 'block' }}>
-                        Your Contact Information
+                        {language.contact_info}
                     </label>
                     <input
                         type="text"
@@ -152,15 +193,16 @@ const [accessGranted, setAccessGranted] = useState(false);
                         name="contactInfo"
                         value={contactInfo}
                         onChange={(e) => setContactInfo(e.target.value)}
-                        placeholder="Seat Number"
+                        placeholder={language.seat_number}
                         required
                     />
                          
                     
                     <button
+                       
                         type="submit" className = "submit"
                     >
-                        Submit Ticket
+                        {language.submit}
                     </button>
                 </form>
             </div>
@@ -169,3 +211,4 @@ const [accessGranted, setAccessGranted] = useState(false);
 }
 
 export default App;
+

@@ -12,6 +12,8 @@ import axios from 'axios';
 import { Low } from 'lowdb'
 import { JSONFile } from 'lowdb/node'
 
+import { GoogleGenerativeAI } from "@google/generative-ai";
+
 //Set up Express App for use
 //Line 12-13 set up the CORS policy and the request body parser (don't worry about this, it scares me too)
 const app = express()
@@ -25,6 +27,14 @@ const file = './db.json'
 const adapter = new JSONFile(file)
 const db = new Low(adapter, adapter)
 
+const languages_file = './languages.json' 
+const adapter1 = new JSONFile(languages_file)
+const lang = new Low(adapter1, adapter1)
+
+const chosen_language_file = './language.json' 
+const adapter2 = new JSONFile(chosen_language_file)
+const chosen_lang = new Low(adapter2, adapter2)
+
 //Reads db.json file
 //If it does not exist, it is created, and an empty jokes array is inserted.
 //If it does exist, do nothing. db.data will be ready for use.
@@ -33,6 +43,9 @@ await db.read()
 db.data ||= { jokes: [] } 
 await db.write()
 
+await chosen_lang.read()
+chosen_lang.data = { chosen_language: "" } 
+await chosen_lang.write()
 /*
 SAVE JOKE POST REQUEST
 Front-end will make a POST request to the app at this endpoint
@@ -83,6 +96,32 @@ app.get('/', (req, res) => {
   });
 })
 
+app.get('/get-text', (req, res) =>{
+  console.log("Setting up website text...")
+})
+
+app.get('/get-languages' , async (req, res ) =>{
+  console.log("Select a language...");
+  await lang.read();
+  const languages = lang.data
+  res.send(languages)
+})
+
+app.post('/choose-lang', async (req, res) =>{
+  await chosen_lang.read();
+  chosen_lang.data = {
+    chosen_language : req.body.language
+  }
+  await chosen_lang.write();
+})
+
+app.get('/get-chosen-lang' , async (req, res ) => {
+  await chosen_lang.read();
+  const language = chosen_lang.data
+  console.log(language)
+  res.send(language);
+})
+
 app.get('/get-requests', async (req, res) => {
   console.log("GET endpoint hit!")
   await db.read();
@@ -129,3 +168,15 @@ app.post('/delete-request', async (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
+
+
+
+async function translate(text, target_language){
+  const genAI = new GoogleGenerativeAI("AIzaSyDcqZcLpDJtWA1O5GXOm3A2kIoqsFP3bHs");
+  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+  const prompt = `Only put output the answer to the following question: Translate ${text} to ${target_language}`;
+
+  return await model.generateContent(prompt);
+  
+}

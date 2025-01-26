@@ -1,0 +1,329 @@
+{
+  "translations": {
+    "English": {
+      "title": "Airport Help Ticket",
+      "help_prompt": "What do you need help with?",
+      "options": ["please select", "baggage assistance", "boarding assistance", "security check", "other"],
+      "other_prompt": "please specify",
+      "contact_info": "Your contact information",
+      "seat_number": "seat number",
+      "submit": "submit ticket",
+      "language_button": {
+          "name": "English",
+          "flag": "🇬🇧"
+        }
+    },
+    "中文 (简体)": {
+      "title": "机场帮助票",
+      "help_prompt": "您需要什么帮助？",
+      "options": ["请选择", "行李协助", "登机协助", "安检", "其他"],
+      "other_prompt": "请说明",
+      "contact_info": "您的联系信息",
+      "seat_number": "座位号",
+      "submit": "提交帮助票",
+      "language_button": {
+          "name": "中文 (简体)",
+          "flag": "🇨🇳"
+        }
+    },
+    "हिन्दी": {
+      "title": "हवाई अड्डा सहायता टिकट",
+      "help_prompt": "आपको किस चीज़ में मदद चाहिए?",
+      "options": ["कृपया चुनें", "सामान सहायता", "बोर्डिंग सहायता", "सुरक्षा जांच", "अन्य"],
+      "other_prompt": "कृपया निर्दिष्ट करें",
+      "contact_info": "आपकी संपर्क जानकारी",
+      "seat_number": "सीट संख्या",
+      "submit": "टिकट जमा करें",
+      "language_button": {
+           "name": "हिन्दी",
+           "flag": "🇮🇳"
+        }
+    },
+    "Español": {
+      "title": "Boleto de Ayuda en el Aeropuerto",
+      "help_prompt": "¿Con qué necesita ayuda?",
+      "options": ["por favor seleccione", "asistencia con el equipaje", "asistencia para abordar", "control de seguridad", "otro"],
+      "other_prompt": "por favor especifique",
+      "contact_info": "Su información de contacto",
+      "seat_number": "número de asiento",
+      "submit": "enviar boleto",
+      "language_button": {
+          "name": "Español",
+          "flag": "🇪🇸"
+        }
+    },
+    "Français": {
+      "title": "Ticket d'Aide à l'Aéroport",
+      "help_prompt": "De quoi avez-vous besoin d'aide?",
+      "options": ["veuillez sélectionner", "assistance bagages", "assistance à l'embarquement", "contrôle de sécurité", "autre"],
+      "other_prompt": "veuillez préciser",
+      "contact_info": "Vos coordonnées",
+      "seat_number": "numéro de siège",
+      "submit": "soumettre le ticket",
+      "language_button": {
+          "name": "Français",
+          "flag": "🇫🇷"
+        }
+    },
+    "العربية": {
+      "title": "تذكرة المساعدة في المطار",
+      "help_prompt": "بماذا تحتاج المساعدة؟",
+      "options": ["الرجاء الاختيار", "مساعدة الأمتعة", "مساعدة الصعود", "التفتيش الأمني", "أخرى"],
+      "other_prompt": "يرجى التحديد",
+      "contact_info": "معلومات الاتصال الخاصة بك",
+      "seat_number": "رقم المقعد",
+      "submit": "إرسال التذكرة",
+      "language_button": {
+          "name": "العربية",
+          "flag": "🇸🇦"
+        }
+    },
+    "বাংলা": {
+      "title": "বিমানবন্দর সাহায্য টিকেট",
+      "help_prompt": "আপনার কী সহায়তা প্রয়োজন?",
+      "options": ["দয়া করে নির্বাচন করুন", "ব্যাগেজ সহায়তা", "বোর্ডিং সহায়তা", "নিরাপত্তা পরীক্ষা", "অন্যান্য"],
+      "other_prompt": "অনুগ্রহ করে উল্লেখ করুন",
+      "contact_info": "আপনার যোগাযোগের তথ্য",
+      "seat_number": "আসন নম্বর",
+      "submit": "টিকেট জমা দিন",
+      "language_button": {
+          "name": "বাংলা",
+          "flag": "🇧🇩"
+        }
+    },
+    "Português": {
+      "title": "Bilhete de Ajuda no Aeroporto",
+      "help_prompt": "De que precisa de ajuda?",
+      "options": ["por favor selecione", "assistência de bagagem", "assistência de embarque", "verificação de segurança", "outro"],
+      "other_prompt": "por favor especifique",
+      "contact_info": "Suas informações de contato",
+      "seat_number": "número do assento",
+      "submit": "enviar bilhete",
+      "language_button": {
+          "name": "Português",
+          "flag": "🇵🇹"
+        }
+    },
+    "Русский": {
+      "title": "Билет на помощь в аэропорту",
+      "help_prompt": "В чём вам нужна помощь?",
+      "options": ["пожалуйста выберите", "помощь с багажом", "помощь при посадке", "проверка безопасности", "другое"],
+      "other_prompt": "пожалуйста уточните",
+      "contact_info": "Ваша контактная информация",
+      "seat_number": "номер места",
+      "submit": "отправить билет",
+      "language_button": {
+          "name": "Русский",
+          "flag": "🇷🇺"
+        }
+    },
+    "اردو": {
+      "title": "ائرپورٹ مدد کا ٹکٹ",
+      "help_prompt": "آپ کو کس چیز میں مدد کی ضرورت ہے؟",
+      "options": ["براہ کرم منتخب کریں", "سامان کی مدد", "بورڈنگ کی مدد", "سیکیورٹی چیک", "دیگر"],
+      "other_prompt": "براہ کرم وضاحت کریں",
+      "contact_info": "آپ کی رابطہ معلومات",
+      "seat_number": "نشست نمبر",
+      "submit": "ٹکٹ جمع کروائیں",
+      "language_button": {
+          "name": "اردو",
+          "flag": "🇵🇰"
+        }
+    },
+    "Bahasa Indonesia": {
+      "title": "Tiket Bantuan Bandara",
+      "help_prompt": "Apa yang Anda butuhkan bantuan?",
+      "options": ["silakan pilih", "bantuan bagasi", "bantuan naik pesawat", "pemeriksaan keamanan", "lainnya"],
+      "other_prompt": "silakan tentukan",
+      "contact_info": "Informasi kontak Anda",
+      "seat_number": "nomor kursi",
+      "submit": "kirim tiket",
+      "language_button": {
+          "name": "Bahasa Indonesia",
+          "flag": "🇮🇩"
+        }
+    },
+    "Deutsch": {
+      "title": "Flughafen-Hilfsticket",
+      "help_prompt": "Wobei benötigen Sie Hilfe?",
+      "options": ["bitte auswählen", "Gepäckhilfe", "Boarding-Hilfe", "Sicherheitskontrolle", "andere"],
+      "other_prompt": "bitte spezifizieren",
+      "contact_info": "Ihre Kontaktinformationen",
+      "seat_number": "Sitznummer",
+      "submit": "Ticket absenden",
+      "language_button": {
+          "name": "Deutsch",
+          "flag": "🇩🇪"
+        }
+    },
+    "日本語": {
+      "title": "空港ヘルプチケット",
+      "help_prompt": "何をお手伝いしましょうか？",
+      "options": ["選択してください", "手荷物の支援", "搭乗支援", "セキュリティチェック", "その他"],
+      "other_prompt": "具体的にお書きください",
+      "contact_info": "連絡先情報",
+      "seat_number": "座席番号",
+      "submit": "チケットを提出する",
+      "language_button": {
+          "name": "日本語",
+          "flag": "🇯🇵"
+        }
+    },
+    "Swahili": {
+      "title": "Tiketi ya Msaada wa Uwanja wa Ndege",
+      "help_prompt": "Unahitaji msaada gani?",
+      "options": ["tafadhali chagua", "msaada wa mizigo", "msaada wa kupanda", "ukaguzi wa usalama", "nyingine"],
+      "other_prompt": "tafadhali fafanua",
+      "contact_info": "Maelezo yako ya mawasiliano",
+      "seat_number": "namba ya kiti",
+      "submit": "tuma tiketi",
+      "language_button": {
+          "name": "Swahili",
+          "flag": "🇰🇪"
+        }
+    },
+    "मराठी": {
+      "title": "विमानतळ मदत तिकीट",
+      "help_prompt": "तुम्हाला कोणत्या गोष्टीस मदत हवी आहे?",
+      "options": ["कृपया निवडा", "सामान सहाय्य", "बोर्डिंग सहाय्य", "सुरक्षा तपासणी", "इतर"],
+      "other_prompt": "कृपया तपशील द्या",
+      "contact_info": "तुमची संपर्क माहिती",
+      "seat_number": "आसन क्रमांक",
+      "submit": "तिकीट सबमिट करा",
+      "language_button": {
+          "name": "मराठी",
+          "flag": "🇮🇳"
+        }
+    },
+    "తెలుగు": {
+      "title": "ఎయిర్‌పోర్ట్ సహాయ టికెట్",
+      "help_prompt": "మీకు ఏ సహాయం కావాలి?",
+      "options": ["దయచేసి ఎంచుకోండి", "సరుకు సహాయం", "బోర్డింగ్ సహాయం", "భద్రతా తనిఖీ", "ఇతర"],
+      "other_prompt": "దయచేసి వివరించండి",
+      "contact_info": "మీ సంప్రదింపు సమాచారం",
+      "seat_number": "సీటు నంబర్",
+      "submit": "టికెట్ సమర్పించు",
+      "language_button": {
+          "name": "తెలుగు",
+          "flag": "🇮🇳"
+        }
+    },
+    "Türkçe": {
+      "title": "Havalimanı Yardım Bileti",
+      "help_prompt": "Ne konuda yardıma ihtiyacınız var?",
+      "options": ["lütfen seçin", "bagaj yardımı", "biniş yardımı", "güvenlik kontrolü", "diğer"],
+      "other_prompt": "lütfen belirtin",
+      "contact_info": "İletişim bilgileriniz",
+      "seat_number": "koltuk numarası",
+      "submit": "bilet gönder",
+      "language_button": {
+          "name": "Türkçe",
+          "flag": "🇹🇷"
+        }
+    },
+    "தமிழ்": {
+      "title": "விமான நிலைய உதவி டிக்கெட்",
+      "help_prompt": "உங்களுக்கு என்ன உதவி தேவை?",
+      "options": ["தயவுசெய்து தேர்வு செய்யவும்", "பையில் உதவி", "ஏற உதவி", "பாதுகாப்பு சோதனை", "மற்றவை"],
+      "other_prompt": "தயவுசெய்து குறிப்பிட்டு எழுதவும்",
+      "contact_info": "உங்கள் தொடர்பு தகவல்",
+      "seat_number": "இருக்கும் எண்",
+      "submit": "டிக்கெட் சமர்ப்பிக்கவும்",
+      "language_button": {
+          "name": "தமிழ்",
+          "flag": "🇮🇳"  
+        }
+    },
+    "한국어": {
+      "title": "공항 도움 요청서",
+      "help_prompt": "어떤 도움이 필요하십니까?",
+      "options": ["선택하세요", "수하물 도움", "탑승 도움", "보안 검사", "기타"],
+      "other_prompt": "구체적으로 작성해주세요",
+      "contact_info": "귀하의 연락처 정보",
+      "seat_number": "좌석 번호",
+      "submit": "요청서 제출",
+      "language_button": {
+          "name": "한국어",
+          "flag": "🇰🇷"
+        }
+    },
+    "Tiếng Việt": {
+      "title": "Vé Trợ Giúp Sân Bay",
+      "help_prompt": "Bạn cần giúp gì?",
+      "options": ["vui lòng chọn", "hỗ trợ hành lý", "hỗ trợ lên máy bay", "kiểm tra an ninh", "khác"],
+      "other_prompt": "vui lòng chỉ rõ",
+      "contact_info": "Thông tin liên hệ của bạn",
+      "seat_number": "số ghế",
+      "submit": "gửi vé",
+      "language_button": {
+           "name": "Tiếng Việt",
+           "flag": "🇻🇳"
+        }
+    },
+    "Italiano": {
+      "title": "Biglietto di Assistenza Aeroportuale",
+      "help_prompt": "Di cosa hai bisogno?",
+      "options": ["per favore seleziona", "assistenza bagagli", "assistenza all'imbarco", "controllo di sicurezza", "altro"],
+      "other_prompt": "per favore specifica",
+      "contact_info": "Le tue informazioni di contatto",
+      "seat_number": "numero di posto",
+      "submit": "invia biglietto",
+      "language_button": {
+          "name": "Italiano",
+          "flag": "🇮🇹"
+        }
+    },
+    "Turkish": {
+      "title": "Havalimanı Yardım Bileti",
+      "help_prompt": "Ne konuda yardıma ihtiyacınız var?",
+      "options": ["lütfen seçin", "bagaj yardımı", "biniş yardımı", "güvenlik kontrolü", "diğer"],
+      "other_prompt": "lütfen belirtin",
+      "contact_info": "İletişim bilgileriniz",
+      "seat_number": "koltuk numarası",
+      "submit": "bilet gönder",
+      "language_button": {
+          "name": "Turkish",
+          "flag": "🇬🇧"
+        }
+    },
+    "Nederlands": {
+      "title": "Luchthaven Hulpkaartje",
+      "help_prompt": "Waar heeft u hulp bij nodig?",
+      "options": ["selecteer alstublieft", "bagagehulp", "instaphulp", "veiligheidscontrole", "anders"],
+      "other_prompt": "gelieve te specificeren",
+      "contact_info": "Uw contactgegevens",
+      "seat_number": "stoelnummer",
+      "submit": "kaartje indienen",
+      "language_button": {
+          "name": "Nederlands",
+          "flag": "🇳🇱"
+        }
+    },
+    "ไทย": {
+      "title": "ตั๋วขอความช่วยเหลือที่สนามบิน",
+      "help_prompt": "คุณต้องการความช่วยเหลืออะไร?",
+      "options": ["กรุณาเลือก", "ช่วยเหลือสัมภาระ", "ช่วยเหลือขึ้นเครื่อง", "ตรวจสอบความปลอดภัย", "อื่นๆ"],
+      "other_prompt": "กรุณาระบุ",
+      "contact_info": "ข้อมูลการติดต่อของคุณ",
+      "seat_number": "หมายเลขที่นั่ง",
+      "submit": "ส่งตั๋ว",
+      "language_button": {
+          "name": "ไทย",
+          "flag": "🇹🇭"
+        }
+    },
+    "Tagolog": {
+        "title": "Ticket ng Tulong sa Paliparan",
+        "help_prompt": "Anong tulong ang kailangan mo?",
+        "options": ["pumili ng isa", "tulong sa bagahe", "tulong sa pag-board", "pagsusuri ng seguridad", "iba pa"],
+        "other_prompt": "mangyaring tukuyin",
+        "contact_info": "Iyong impormasyon sa pakikipag-ugnayan",
+        "seat_number": "numero ng upuan",
+        "submit": "ipasa ang ticket",
+        "language_button": {
+          "name": "Tagalog",
+          "flag": "🇵🇭"
+        }
+      } 
+  }
+}
