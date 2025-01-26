@@ -8,6 +8,15 @@
   border-radius: '4px';
   font-size: '1rem';
 }
+
+body {
+  background-image: ("../public/Homepageimg.jpeg"); /* Path to your image */
+  background-size: cover; /* Make the image cover the entire page */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent tiling */
+  margin: 0; /* Remove default margin */
+  height: 100vh; /* Ensure it covers the full viewport height */
+}
 .contactInfo{
     width: '100%';
     margin-bottom: '15px';

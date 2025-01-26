@@ -1,34 +1,3 @@
 {
-  "requests": [
-    {
-      "key": 1,
-      "name": "boarding",
-      "seat_num": "23",
-      "complete": false
-    },
-    {
-      "key": 1,
-      "name": "security",
-      "seat_num": "12",
-      "complete": false
-    },
-    {
-      "key": 1,
-      "name": "baggage",
-      "seat_num": "12E",
-      "complete": false
-    },
-    {
-      "key": 1,
-      "name": "I like iofapife;ofqo;",
-      "seat_num": "12D",
-      "complete": false
-    },
-    {
-      "key": 2,
-      "name": "I would like a snack.",
-      "seat_num": "1A",
-      "complete": false
-    }
-  ]
+  "requests": []
 }

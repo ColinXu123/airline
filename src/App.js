@@ -107,15 +107,19 @@ function App({lang}) {
         },[state]);
     return (
         
-        <div style={{
-            fontFamily: 'Arial, sans-serif',
-            backgroundColor: '#f4f4f9',
-            color: '#333',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            height: '100vh',
-        }}>
+        <div
+            style={{
+                fontFamily: 'Arial, sans-serif',
+                backgroundImage: "url('americanairlineshome.jpg')",
+                backgroundSize: 'cover', // Ensures the image covers the entire div
+                backgroundPosition: 'center', // Centers the image
+                backgroundRepeat: 'no-repeat', // Prevents tiling
+                color: '#333',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                height: '100vh', // Full viewport height
+                        }}>
             <div style={{
                 width: '100%',
                 maxWidth: '400px',

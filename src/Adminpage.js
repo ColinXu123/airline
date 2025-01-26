@@ -40,7 +40,7 @@ function AdminPage() {
   };
 
   return (
-    <div>
+    <div style={{ textAlign: 'center' }}>
       <h1>Admin Page</h1>
       <table border="1" style={{ width: '100%', textAlign: 'left' }}>
         <thead>
