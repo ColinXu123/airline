@@ -1,0 +1,23 @@
+{
+  "jokes": [
+    "Joke",
+    {
+      "joke": "baggage"
+    },
+    {
+      "joke": "boarding"
+    },
+    {
+      "joke": "baggage"
+    },
+    {
+      "joke": "boarding"
+    },
+    {
+      "joke": "boarding"
+    },
+    {
+      "joke": "boarding"
+    }
+  ]
+}

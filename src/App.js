@@ -2,22 +2,21 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import AdminPage from './Adminpage';
+import axios from 'axios';
 import './App.css';
 function App() {
     const [helpTopic, setHelpTopic] = useState('');
     const [otherHelp, setOtherHelp] = useState('');
     const [contactInfo, setContactInfo] = useState('');
-
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        let message = `Help Topic: ${helpTopic}\n`;
+        let message = `${helpTopic}`;
         if (helpTopic === 'other') {
-            message += `Other Issue: ${otherHelp}\n`;
+            message += `${otherHelp}`;
         }
-        message += `Contact Info: ${contactInfo}`;
+        handleSave(message);
 
-        alert("Your help ticket has been submitted:\n" + message);
         setHelpTopic('');
         setOtherHelp('');
         setContactInfo('');
@@ -30,7 +29,17 @@ function App() {
          navigate('/Adminpage'); // Navigate to the About page
        };
    
-       
+       function handleSave(helpitem) {
+        let primary = helpitem;
+  
+        axios({
+          method: 'post',
+          url: 'http://localhost:3001/save-joke',
+          data: {
+            joke: primary || "",
+          }
+        })
+      }  
 
     
     return (
@@ -53,7 +62,7 @@ function App() {
                 padding: '20px',
             }}>
 
-
+                
                 <button style={{ fontSize: '1.0rem', textAlign: 'top', marginBottom: '5px' }}  onClick = {handleButtonClick} >Admin MODE</button>
                 <h1 style={{ fontSize: '1.5rem', textAlign: 'center', marginBottom: '20px' }}>Airport Help Ticket</h1>
                 
@@ -119,7 +128,8 @@ function App() {
                         placeholder="Seat Number"
                         required
                     />
-
+                         
+                    
                     <button
                         type="submit" className = "submit"
                     >
